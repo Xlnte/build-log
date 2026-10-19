@@ -20,7 +20,7 @@ An earlier test had suggested four channels hurt quality. That test used 23 case
 
 The fix was a per-tier timeout instead of a name list. The extraction tier now has a 900-second limit. The same deploy also made the router pass through the temperature and output-token settings that the pipeline had been requesting. Before this, the model ran on its defaults. The router version that carried both fixes went live at 18:08.
 
-The 900-second figure is not arbitrary. It matches the client's own timeout, so the router never gives up first. Successful calls took 37 to 98 seconds. One test call with a 32,000-token prompt took 301 seconds, which would have failed the 300-second default by under a second.
+The 900-second figure is not arbitrary. It matches the client's own timeout, so the router never gives up first. Successful calls took 37 to 98 seconds. One test call with a 36,000-token prompt took 301 seconds, which would have failed the 300-second default by under a second.
 
 **The rerun got 19 of 30 threads.** The rerun ran at four channels from 18:11 to 19:43. It recorded 19 successes, 11 failures and 3 signals. The router reported HTTP 200 for all 31 model calls, the slowest at 430 seconds. Every one of the 11 failures carried the same reason: an empty model reply.
 
